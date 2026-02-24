@@ -5,13 +5,13 @@ import {
   InvalidStatusTransitionError,
 } from "../errors/TaskErrors";
 
-interface TaskProps {
+export interface TaskProps {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   projectId: string;
   status?: TaskStatus;
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 export class Task {
