@@ -83,4 +83,17 @@ export class Task {
     if (!title || title.trim().length < 5) throw new InvalidTaskTitleError();
   }
   //end region    --- PRIVATE VALIDATIONS
+
+  //region        --- PRESENTER
+  toJSON() {
+    return {
+      id: this._id,
+      title: this._title,
+      description: this._description,
+      projectId: this._projectId,
+      status: this._status,
+      createdAt: this._createdAt,
+    };
+  }
+  //end region    --- PRESENTER
 }
