@@ -190,8 +190,8 @@ npm run dev
 
  - [x] Integración con TypeORM
  - [x] PostgreSQL real
- - [ ] Middleware global de manejo de errores
- - [ ] Logging estructurado
+ - [x] Middleware global de manejo de errores
+ - [x] Logging estructurado
  - [ ] Validación
  - [ ] Autenticación con JWT
  - [ ] Autorización basada en roles

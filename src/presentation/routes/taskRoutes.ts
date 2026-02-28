@@ -7,7 +7,7 @@ import { TypeORMTaskRepository } from "../../infrastructure/database/typeorm/rep
 
 const router = Router();
 
-// const repository = new InMemoryTaskRepository();
+// const reposkitory = new InMemoryTaskRepository();
 const repository = new TypeORMTaskRepository();
 const createTaskUseCase = new CreateTaskUseCase(repository);
 const startTaskUseCase = new StartTaskUseCase(repository);
