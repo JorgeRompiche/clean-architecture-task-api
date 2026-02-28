@@ -12,5 +12,20 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  api: 
+    build: .
+    container_name: task-api
+    restart: always
+    depends_on: 
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_NAME: taskdb
+    ports:
+      - "3000:3000"
+
 volumes:
   postgres_data:

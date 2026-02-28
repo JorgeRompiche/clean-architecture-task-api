@@ -195,8 +195,8 @@ npm run dev
  - [x] Validación
  - [ ] Autenticación con JWT
  - [ ] Autorización basada en roles
- - [ ] Dockerfile
- - [ ] Docker Compose
+ - [x] Dockerfile
+ - [x] Docker Compose
  - [ ] CI con GitHub Actions
 
 ---

@@ -10,8 +10,8 @@ import { StartTaskSchema } from "../validators/StartTaskSchema";
 
 const router = Router();
 
-const repository = new InMemoryTaskRepository();
-// const repository = new TypeORMTaskRepository();
+// const repository = new InMemoryTaskRepository();
+const repository = new TypeORMTaskRepository();
 const createTaskUseCase = new CreateTaskUseCase(repository);
 const startTaskUseCase = new StartTaskUseCase(repository);
 
