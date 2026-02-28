@@ -192,7 +192,7 @@ npm run dev
  - [x] PostgreSQL real
  - [x] Middleware global de manejo de errores
  - [x] Logging estructurado
- - [ ] Validación
+ - [x] Validación
  - [ ] Autenticación con JWT
  - [ ] Autorización basada en roles
  - [ ] Dockerfile

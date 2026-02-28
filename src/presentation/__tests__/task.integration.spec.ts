@@ -39,9 +39,9 @@ describe("Task API Integration", () => {
     expect(response.body.error).toBeDefined();
   });
 
-  it("Should return 404 when starting non-existent task", async () => {
+  it("Should return 400 when starting non-existent task", async () => {
     const response = await request(app).patch("/tasks/non-existent-id/start");
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(400);
     expect(response.body.error).toBeDefined();
   });
 });
