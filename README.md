@@ -186,18 +186,13 @@ npm run dev
 
 ---
 
-## Siguientes versiones
+## Siguientes pasos
 
-### v2
-
- - [ ] Integración con TypeORM
- - [ ] PostgreSQL real
+ - [x] Integración con TypeORM
+ - [x] PostgreSQL real
  - [ ] Middleware global de manejo de errores
  - [ ] Logging estructurado
  - [ ] Validación
-
-### v3
-
  - [ ] Autenticación con JWT
  - [ ] Autorización basada en roles
  - [ ] Dockerfile

@@ -3,10 +3,12 @@ import { TaskController } from "../controllers/TaskController";
 import { InMemoryTaskRepository } from "../../infrastructure/repositories/InMemoryTaskRepository";
 import { CreateTaskUseCase } from "../../application/use-cases/CreateTaskUseCase";
 import { StartTaskUseCase } from "../../application/use-cases/StartTaskUseCase";
+import { TypeORMTaskRepository } from "../../infrastructure/database/typeorm/repositories/TypeORMTaskRepository";
 
 const router = Router();
 
-const repository = new InMemoryTaskRepository();
+// const repository = new InMemoryTaskRepository();
+const repository = new TypeORMTaskRepository();
 const createTaskUseCase = new CreateTaskUseCase(repository);
 const startTaskUseCase = new StartTaskUseCase(repository);
 
