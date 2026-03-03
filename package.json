@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "dev": "ts-node-dev --respawn --transpile-only src/main/server.ts",
     "start": "node dist/main/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "dev": "ts-node-dev --respawn --transpile-only src/main/server.ts"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "npm run typeorm -- migration:generate src/infrastructure/database/typeorm/migrations/Init -d src/infrastructure/database/typeorm/data-source.ts",
+    "migration:run": "npm run typeorm -- migration:run -d src/infrastructure/database/typeorm/data-source.ts"
   },
   "keywords": [],
   "author": "",

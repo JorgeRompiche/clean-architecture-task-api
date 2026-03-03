@@ -9,7 +9,12 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER || "postgres",
   password: process.env.DB_PASS || "postgres",
   database: process.env.DB_NAME || "taskdb",
-  synchronize: true,
+  synchronize: false,
   logging: false,
   entities: [TaskORMEntity],
+  migrations: [
+    process.env.NODE_ENV === "production"
+      ? "dist/infrastructure/database/typeorm/migrations/*.js"
+      : "src/infrastructure/database/typeorm/migrations/*.ts",
+  ],
 });
