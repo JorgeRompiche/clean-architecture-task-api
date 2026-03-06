@@ -37,23 +37,18 @@ export class Task {
   get id(): string {
     return this._id;
   }
-
   get title(): string {
     return this._title;
   }
-
   get description(): string | undefined {
     return this._description;
   }
-
   get projectId(): string {
     return this._projectId;
   }
-
   get status(): TaskStatus {
     return this._status;
   }
-
   get createdAt(): Date {
     return this._createdAt;
   }
@@ -78,11 +73,11 @@ export class Task {
   }
   //end region  --- BEHAVIOR
 
-  //region        --- PRIVATE VALIDATIONS
+  //region        --- VALIDATIONS
   private ValidateTitle(title: string): void {
     if (!title || title.trim().length < 5) throw new InvalidTaskTitleError();
   }
-  //end region    --- PRIVATE VALIDATIONS
+  //end region    --- VALIDATIONS
 
   //region        --- PRESENTER
   toJSON() {
