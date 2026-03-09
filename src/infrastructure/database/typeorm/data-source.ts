@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { TaskORMEntity } from "./entities/TaskORMEntity";
+import { UserORMEntity } from "./entities/UserORMEntity";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -11,7 +12,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME || "taskdb",
   synchronize: false,
   logging: false,
-  entities: [TaskORMEntity],
+  entities: [TaskORMEntity, UserORMEntity],
   migrations: [
     process.env.NODE_ENV === "production"
       ? "dist/infrastructure/database/typeorm/migrations/*.js"

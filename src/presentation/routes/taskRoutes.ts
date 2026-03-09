@@ -7,6 +7,8 @@ import { TypeORMTaskRepository } from "../../infrastructure/database/typeorm/rep
 import { validateRequest } from "../validators/validateRequest";
 import { CreateTaskSchema } from "../validators/CreateTaskSchema";
 import { StartTaskSchema } from "../validators/StartTaskSchema";
+import { authMiddleware } from "../middleware/authMiddlewaare";
+import { roleMiddleware } from "../middleware/roleMiddleware";
 
 const router = Router();
 
@@ -17,11 +19,17 @@ const startTaskUseCase = new StartTaskUseCase(repository);
 
 const controller = new TaskController(createTaskUseCase, startTaskUseCase);
 
-router.post("/", validateRequest({ body: CreateTaskSchema }), (req, res) =>
-  controller.create(req, res),
+router.post(
+  "/",
+  validateRequest({ body: CreateTaskSchema }),
+  authMiddleware,
+  roleMiddleware("USER"),
+  (req, res) => controller.create(req, res),
 );
 router.patch(
   "/:id/start",
+  authMiddleware,
+  roleMiddleware("USER"),
   validateRequest({ params: StartTaskSchema }),
   (req, res) => controller.start(req, res),
 );
