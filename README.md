@@ -287,8 +287,8 @@ cd clean-architecture-task-api
  - [x] Middleware global de errores
  - [x] Logging estructurado
  - [x] Validación robusta
- - [ ] Autenticación JWT
- - [ ] Autorización basada en roles
+ - [x] Autenticación JWT
+ - [x] Autorización basada en roles
  - [ ] CI con GitHub Actions
  - [ ] Coverage report
 
