@@ -12,6 +12,7 @@ export interface TaskProps {
   projectId: string;
   status?: TaskStatus;
   createdAt?: Date;
+  ownerId?: string;
 }
 
 export class Task {
@@ -21,6 +22,7 @@ export class Task {
   private _projectId: string;
   private _status: TaskStatus;
   private _createdAt: Date;
+  private _ownerId?: string;
 
   constructor(props: TaskProps) {
     this.ValidateTitle(props.title);
@@ -31,6 +33,7 @@ export class Task {
     this._projectId = props.projectId;
     this._status = props.status ?? TaskStatus.PENDING;
     this._createdAt = props.createdAt ?? new Date();
+    this._ownerId = props.ownerId;
   }
 
   //region      --- GETTERS
@@ -52,6 +55,9 @@ export class Task {
   get createdAt(): Date {
     return this._createdAt;
   }
+  get ownerId(): string | undefined {
+    return this._ownerId;
+  }
   //end region  --- GETTERS
 
   //region      --- BEHAVIOR
@@ -71,6 +77,10 @@ export class Task {
       throw new InvalidStatusTransitionError();
     this._status = TaskStatus.COMPLETED;
   }
+
+  updateOwner(newOwner: string): void {
+    this._ownerId = newOwner;
+  }
   //end region  --- BEHAVIOR
 
   //region        --- VALIDATIONS
@@ -88,6 +98,7 @@ export class Task {
       projectId: this._projectId,
       status: this._status,
       createdAt: this._createdAt,
+      ownerId: this._ownerId,
     };
   }
   //end region    --- PRESENTER

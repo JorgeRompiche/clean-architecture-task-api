@@ -12,6 +12,7 @@ export class CreateTaskUseCase {
       title: input.title,
       description: input.description,
       projectId: input.projectId,
+      ownerId: input.ownerId,
     });
 
     return await this.taskRepository.save(task);

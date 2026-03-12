@@ -27,4 +27,9 @@ export class TypeORMTaskRepository implements ITaskRepository {
     const ormEntities = await this.repository.findBy({ projectId });
     return ormEntities.map((oe) => TaskMapper.toDomain(oe));
   }
+
+  async findByOwner(ownerId: string): Promise<Task[]> {
+    const ormEntities = await this.repository.findBy({ ownerId });
+    return ormEntities.map((oe) => TaskMapper.toDomain(oe));
+  }
 }

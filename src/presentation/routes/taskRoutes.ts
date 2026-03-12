@@ -9,6 +9,8 @@ import { CreateTaskSchema } from "../validators/CreateTaskSchema";
 import { StartTaskSchema } from "../validators/StartTaskSchema";
 import { authMiddleware } from "../middleware/authMiddlewaare";
 import { roleMiddleware } from "../middleware/roleMiddleware";
+import { FindTasksByOwnerUseCase } from "../../application/use-cases/FindTasksByOwnerUseCase";
+import { ListTasksSchema } from "../validators/ListTasksSchema";
 
 const router = Router();
 
@@ -16,8 +18,13 @@ const router = Router();
 const repository = new TypeORMTaskRepository();
 const createTaskUseCase = new CreateTaskUseCase(repository);
 const startTaskUseCase = new StartTaskUseCase(repository);
+const listTasksUseCase = new FindTasksByOwnerUseCase(repository);
 
-const controller = new TaskController(createTaskUseCase, startTaskUseCase);
+const controller = new TaskController(
+  createTaskUseCase,
+  startTaskUseCase,
+  listTasksUseCase,
+);
 
 router.post(
   "/",
@@ -32,6 +39,17 @@ router.patch(
   roleMiddleware("USER"),
   validateRequest({ params: StartTaskSchema }),
   (req, res) => controller.start(req, res),
+);
+router.get(
+  "/",
+  authMiddleware,
+  roleMiddleware("USER"),
+  validateRequest({
+    params: ListTasksSchema,
+    query: ListTasksSchema,
+    body: ListTasksSchema,
+  }),
+  (req, res) => controller.list(req, res),
 );
 
 export const taskRoutes = router;

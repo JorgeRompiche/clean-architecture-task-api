@@ -19,4 +19,7 @@ export class TaskORMEntity {
 
   @Column()
   createdAt!: Date;
+
+  @Column("uuid")
+  ownerId!: string;
 }
