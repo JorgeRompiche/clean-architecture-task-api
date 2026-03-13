@@ -1,4 +1,11 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  OneToMany,
+} from "typeorm";
+import { TaskORMEntity } from "./TaskORMEntity";
 
 @Entity("users")
 export class UserORMEntity {
@@ -19,4 +26,7 @@ export class UserORMEntity {
 
   @CreateDateColumn()
   createdAt!: Date;
+
+  @OneToMany(() => TaskORMEntity, (task) => task.ownerId)
+  tasks!: TaskORMEntity[];
 }

@@ -1,4 +1,5 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { UserORMEntity } from "./UserORMEntity";
 
 @Entity("tasks")
 export class TaskORMEntity {
@@ -22,4 +23,10 @@ export class TaskORMEntity {
 
   @Column("uuid")
   ownerId!: string;
+
+  @ManyToOne(() => UserORMEntity, (user) => user.tasks, {
+    onDelete: "CASCADE",
+  })
+  @JoinColumn({ name: "ownerId" })
+  owner!: UserORMEntity;
 }
